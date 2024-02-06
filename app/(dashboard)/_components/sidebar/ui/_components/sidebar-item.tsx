@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useOrganizationList, useOrganization } from "@clerk/nextjs";
 import { cn } from "~/lib/utils";
-import { Hint } from "~/app/(dashboard)/_components/hint";
+import { Hint } from "~/app/(dashboard)/_components/hint/ui/hint";
 
 interface SidebarItemProps {
   id: string;

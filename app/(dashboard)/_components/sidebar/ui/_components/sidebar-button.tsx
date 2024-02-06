@@ -2,7 +2,7 @@
 import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
 import { Plus } from "lucide-react";
 import { CreateOrganization } from "@clerk/nextjs";
-import { Hint } from "../hint";
+import { Hint } from "../../../hint/ui/hint";
 
 const SidebarButton = () => {
   return (

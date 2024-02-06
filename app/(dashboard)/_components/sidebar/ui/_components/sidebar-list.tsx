@@ -1,6 +1,6 @@
 "use client";
 import { useOrganizationList } from "@clerk/nextjs";
-import { SidebarItem } from "~/app/(dashboard)/_components/sidebar/sidebar-item";
+import { SidebarItem } from "./sidebar-item";
 
 const SidebarList = () => {
   const { userMemberships } = useOrganizationList({
