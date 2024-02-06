@@ -1,0 +1,27 @@
+"use client";
+import { useOrganizationList } from "@clerk/nextjs";
+import { SidebarItem } from "~/app/(dashboard)/_components/sidebar/sidebar-item";
+
+const SidebarList = () => {
+  const { userMemberships } = useOrganizationList({
+    userMemberships: {
+      infinite: true,
+    },
+  });
+
+  if (!userMemberships.data?.length) return null;
+
+  return (
+    <ul className={"flex flex-col gap-y-4"}>
+      {userMemberships.data?.map((member) => (
+        <SidebarItem
+          id={member.organization.id}
+          name={member.organization.name}
+          imageUrl={member.organization.imageUrl}
+        />
+      ))}
+    </ul>
+  );
+};
+
+export { SidebarList };
