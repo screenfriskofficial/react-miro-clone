@@ -53,3 +53,31 @@ export const remove = mutation({
     await ctx.db.delete(args.id);
   },
 });
+
+export const update = mutation({
+  args: {
+    id: v.id('boards'),
+    title: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const identity = ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error('Unauthorized');
+    }
+
+    const title = args.title.trim();
+
+    if (!title) {
+      throw new Error('Title is required!');
+    }
+
+    if (title.length > 60) {
+      throw new Error('Title cannot be longer then 60 characters');
+    }
+
+    await ctx.db.patch(args.id, {
+      title: args.title,
+    });
+  },
+});
