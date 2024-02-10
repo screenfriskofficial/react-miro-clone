@@ -1727,6 +1727,11 @@ convert-source-map@^2.0.0:
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-2.0.0.tgz#4b560f649fc4e918dd0ab75cf4961e8bc882d82a"
   integrity sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==
 
+convex-helpers@^0.1.15:
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/convex-helpers/-/convex-helpers-0.1.15.tgz#1adedcd347fff950147085b6b335917eadccd9bf"
+  integrity sha512-G9MNXH4CsBfnwNCsFH3vjVBpiWGiz2cRYz6oHLEyKjqGJe6XKbD7B0y5r3pAOCokaY6q6NcfamqAFwrMdUIOJw==
+
 convex@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/convex/-/convex-1.8.0.tgz#4efcd2935e984dcc93c44b8b565ab01c735412ef"

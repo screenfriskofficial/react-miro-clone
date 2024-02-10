@@ -15,7 +15,7 @@ interface BoardListProps {
   orgId: string;
 }
 const BoardList = ({ orgId, query }: BoardListProps) => {
-  const data = useQuery(api.boards.get, { orgId });
+  const data = useQuery(api.boards.get, { orgId, ...query });
 
   if (data === undefined) {
     return (
@@ -62,7 +62,7 @@ const BoardList = ({ orgId, query }: BoardListProps) => {
             imageUrl={board.imageUrl}
             createdAt={board._creationTime}
             orgId={board.orgId}
-            isFavorite={board.favorite}
+            isFavorite={board.isFavorite}
           />
         ))}
       </div>

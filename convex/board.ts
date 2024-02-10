@@ -29,7 +29,7 @@ export const create = mutation({
 
     const randomImage = images[Math.floor(Math.random() * images.length)];
 
-    await ctx.db.insert('boards', {
+    return await ctx.db.insert('boards', {
       title: args.title,
       orgId: args.orgId,
       authorId: identity.subject,
@@ -50,7 +50,18 @@ export const remove = mutation({
       throw new Error('Unauthorized');
     }
 
-    await ctx.db.delete(args.id);
+    const userId = identity.subject;
+
+    const existingFavorite = await ctx.db
+      .query('userFavorites')
+      .withIndex('by_user_board', (q) => q.eq('userId', userId).eq('boardId', args.id))
+      .unique();
+
+    if (existingFavorite) {
+      await ctx.db.delete(existingFavorite._id);
+    }
+
+    return await ctx.db.delete(args.id);
   },
 });
 
@@ -76,7 +87,7 @@ export const update = mutation({
       throw new Error('Title cannot be longer then 60 characters');
     }
 
-    await ctx.db.patch(args.id, {
+    return await ctx.db.patch(args.id, {
       title: args.title,
     });
   },
@@ -103,16 +114,14 @@ export const favorite = mutation({
 
     const existingFavorite = await ctx.db
       .query('userFavorites')
-      .withIndex('by_user_board_org', (q) =>
-        q.eq('userId', userId).eq('boardId', board._id).eq('orgId', args.orgId),
-      )
+      .withIndex('by_user_board', (q) => q.eq('userId', userId).eq('boardId', board._id))
       .unique();
 
     if (existingFavorite) {
       throw new Error('Board already favorited!');
     }
 
-    await ctx.db.insert('userFavorites', {
+    return await ctx.db.insert('userFavorites', {
       orgId: args.orgId,
       boardId: board._id,
       userId,
@@ -147,6 +156,6 @@ export const unfavortie = mutation({
       throw new Error('Favorited board not found!');
     }
 
-    await ctx.db.delete(existingFavorite._id);
+    return await ctx.db.delete(existingFavorite._id);
   },
 });
