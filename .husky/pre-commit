@@ -1,2 +1,6 @@
+# .husky/pre-commit
+yarn test
 yarn start:prettier
 yarn lint
+
+exit 1

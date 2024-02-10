@@ -8,7 +8,7 @@
     "start": "next start",
     "start:prettier": "npx prettier --write .",
     "lint": "next lint",
-    "prepare": "husky"
+    "postinstall": "husky"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.6",
