@@ -1,3 +1,5 @@
+import { Skeleton } from '~/components/ui/skeleton';
+
 const Toolbar = () => {
   return (
     <div
@@ -14,6 +16,16 @@ const Toolbar = () => {
         <div>Redo</div>
       </div>
     </div>
+  );
+};
+
+Toolbar.Skeleton = function ToolbarSkeleton() {
+  return (
+    <Skeleton
+      className={
+        'absolute top-1/2 -translate-y-[50%] rounded-md bg-white left-3 flex flex-col justify-center gap-y-4 h-[360px] w-[52px] shadow-md'
+      }
+    />
   );
 };
 
