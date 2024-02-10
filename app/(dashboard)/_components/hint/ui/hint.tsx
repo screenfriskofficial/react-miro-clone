@@ -1,18 +1,18 @@
+import React from "react"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "~/components/ui/tooltip";
-import React from "react";
+} from "~/components/ui/tooltip"
 
 interface HintProps {
-  label: string;
-  children: React.ReactNode;
-  side?: "top" | "bottom" | "left" | "right";
-  align?: "start" | "center" | "end";
-  sideOffset?: number;
-  alignOffset?: number;
+  label: string
+  children: React.ReactNode
+  side?: "top" | "bottom" | "left" | "right"
+  align?: "start" | "center" | "end"
+  sideOffset?: number
+  alignOffset?: number
 }
 
 const Hint = ({
@@ -28,7 +28,7 @@ const Hint = ({
       <Tooltip delayDuration={100}>
         <TooltipTrigger asChild>{children}</TooltipTrigger>
         <TooltipContent
-          className={"text-white bg-black border-black"}
+          className={"border-black bg-black text-white"}
           side={side}
           align={align}
           alignOffset={alignOffset}
@@ -38,7 +38,7 @@ const Hint = ({
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
-  );
-};
+  )
+}
 
-export { Hint };
+export { Hint }

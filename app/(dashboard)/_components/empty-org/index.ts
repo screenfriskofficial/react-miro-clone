@@ -1,1 +1,1 @@
-export { EmptyOrg } from "./ui/empty-org";
+export { EmptyOrg } from "./ui/empty-org"

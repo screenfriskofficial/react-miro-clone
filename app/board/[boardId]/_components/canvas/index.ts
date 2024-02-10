@@ -1,1 +1,1 @@
-export { Canvas } from './ui/canvas';
+export { Canvas } from "./ui/canvas"

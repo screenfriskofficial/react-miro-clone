@@ -1,14 +1,14 @@
-import Image from "next/image";
-import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
-import { Button } from "~/components/ui/button";
-import { CreateOrganization } from "@clerk/nextjs";
+import Image from "next/image"
+import { CreateOrganization } from "@clerk/nextjs"
+import { Button } from "~/components/ui/button"
+import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog"
 
 const EmptyOrg = () => {
   return (
-    <div className={"h-full flex flex-col items-center justify-center"}>
+    <div className={"flex h-full flex-col items-center justify-center"}>
       <Image src={"/elements.svg"} alt={"elements"} height={200} width={200} />
-      <h2 className={"text-2xl font-semibold mt-6"}>Welcome to Board</h2>
-      <p className={"text-muted-foreground text-sm mt-2"}>
+      <h2 className={"mt-6 text-2xl font-semibold"}>Welcome to Board</h2>
+      <p className={"mt-2 text-sm text-muted-foreground"}>
         Create organization to get started!
       </p>
       <div className={"mt-6"}>
@@ -17,14 +17,14 @@ const EmptyOrg = () => {
             <Button size={"lg"}>Create organization</Button>
           </DialogTrigger>
           <DialogContent
-            className={"p-0 bg-transparent border-none max-w-[480px]"}
+            className={"max-w-[480px] border-none bg-transparent p-0"}
           >
             <CreateOrganization />
           </DialogContent>
         </Dialog>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export { EmptyOrg };
+export { EmptyOrg }

@@ -1,8 +1,10 @@
-"use client";
-import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog";
-import { Plus } from "lucide-react";
-import { CreateOrganization } from "@clerk/nextjs";
-import { Hint } from "../../../hint/ui/hint";
+"use client"
+
+import { CreateOrganization } from "@clerk/nextjs"
+import { Dialog, DialogContent, DialogTrigger } from "~/components/ui/dialog"
+import { Plus } from "lucide-react"
+
+import { Hint } from "../../../hint/ui/hint"
 
 const SidebarButton = () => {
   return (
@@ -17,7 +19,7 @@ const SidebarButton = () => {
           >
             <button
               className={
-                "bg-white/25 h-full w-full flex items-center justify-center rounded-md shadow-md opacity-60 hover:opacity-100 transition-opacity duration-300"
+                "flex h-full w-full items-center justify-center rounded-md bg-white/25 opacity-60 shadow-md transition-opacity duration-300 hover:opacity-100"
               }
             >
               <Plus className={"text-white"} />
@@ -25,11 +27,11 @@ const SidebarButton = () => {
           </Hint>
         </div>
       </DialogTrigger>
-      <DialogContent className={"p-0 bg-transparent border-none max-w-[480px]"}>
+      <DialogContent className={"max-w-[480px] border-none bg-transparent p-0"}>
         <CreateOrganization />
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}
 
-export { SidebarButton };
+export { SidebarButton }

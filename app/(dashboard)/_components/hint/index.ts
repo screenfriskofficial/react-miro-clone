@@ -1,1 +1,1 @@
-export { Hint } from "./ui/hint";
+export { Hint } from "./ui/hint"

@@ -1,1 +1,1 @@
-export { EmptySearch } from "./ui/empty-search";
+export { EmptySearch } from "./ui/empty-search"

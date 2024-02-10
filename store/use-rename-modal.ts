@@ -1,15 +1,15 @@
-import { create } from 'zustand';
+import { create } from "zustand"
 
 const defaultValues = {
-  id: '',
-  title: '',
-};
+  id: "",
+  title: "",
+}
 
 interface IRenameModal {
-  isOpen: boolean;
-  initialValues: typeof defaultValues;
-  onOpen: (id: string, title: string) => void;
-  onClose: () => void;
+  isOpen: boolean
+  initialValues: typeof defaultValues
+  onOpen: (id: string, title: string) => void
+  onClose: () => void
 }
 
 export const useRenameModal = create<IRenameModal>((set) => ({
@@ -25,4 +25,4 @@ export const useRenameModal = create<IRenameModal>((set) => ({
       initialValues: defaultValues,
     }),
   initialValues: defaultValues,
-}));
+}))

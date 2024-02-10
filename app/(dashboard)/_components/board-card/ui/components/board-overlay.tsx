@@ -1,7 +1,11 @@
 const BoardOverlay = () => {
   return (
-    <div className={'opacity-0 group-hover:opacity-50 transition-opacity h-full w-full bg-black'} />
-  );
-};
+    <div
+      className={
+        "h-full w-full bg-black opacity-0 transition-opacity group-hover:opacity-50"
+      }
+    />
+  )
+}
 
-export { BoardOverlay };
+export { BoardOverlay }

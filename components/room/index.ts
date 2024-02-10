@@ -1,1 +1,1 @@
-export { Room } from './ui/room';
+export { Room } from "./ui/room"

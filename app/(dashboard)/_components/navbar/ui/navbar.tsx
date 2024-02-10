@@ -1,14 +1,16 @@
-"use client";
+"use client"
+
 import {
   OrganizationSwitcher,
-  UserButton,
   useOrganization,
-} from "@clerk/nextjs";
-import { NavbarSearchInput } from "./_components/navbar-search-input";
-import { NavbarInviteButton } from "./_components/navbar-invite-button";
+  UserButton,
+} from "@clerk/nextjs"
+
+import { NavbarInviteButton } from "./_components/navbar-invite-button"
+import { NavbarSearchInput } from "./_components/navbar-search-input"
 
 const Navbar = () => {
-  const { organization } = useOrganization();
+  const { organization } = useOrganization()
   return (
     <header className={"flex items-center gap-x-4 p-5"}>
       <div className={"hidden lg:flex lg:flex-1"}>
@@ -41,7 +43,7 @@ const Navbar = () => {
       {organization && <NavbarInviteButton />}
       <UserButton />
     </header>
-  );
-};
+  )
+}
 
-export { Navbar };
+export { Navbar }

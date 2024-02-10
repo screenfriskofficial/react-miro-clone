@@ -1,1 +1,1 @@
-export { EmptyBoards } from "./ui/empty-boards";
+export { EmptyBoards } from "./ui/empty-boards"

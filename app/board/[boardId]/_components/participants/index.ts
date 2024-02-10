@@ -1,1 +1,1 @@
-export { Participats } from './ui/participants';
+export { Participats } from "./ui/participants"

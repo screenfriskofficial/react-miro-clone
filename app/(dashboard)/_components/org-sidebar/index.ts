@@ -1,1 +1,1 @@
-export { OrgSidebar } from "./ui/org-sidebar";
+export { OrgSidebar } from "./ui/org-sidebar"
