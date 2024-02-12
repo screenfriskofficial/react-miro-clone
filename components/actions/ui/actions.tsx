@@ -45,40 +45,46 @@ const Actions = ({ children, side, sideOffset, id, title }: ActionsProps) => {
   }
 
   return (
-    <div className={"absolute right-1 top-1 z-50"}>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
-        <DropdownMenuContent
-          side={side}
-          sideOffset={sideOffset}
-          className={"w-60"}
-          onClick={(e) => e.stopPropagation()}
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
+      <DropdownMenuContent
+        side={side}
+        sideOffset={sideOffset}
+        className={"w-60"}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <DropdownMenuItem
+          className={"cursor-pointer p-3"}
+          onClick={handleCopyLink}
         >
-          <DropdownMenuItem className={"cursor-pointer p-3"} onClick={handleCopyLink}>
-            <Link2 className={"mr-2 h-4 w-4"} />
-            Copy board link
-          </DropdownMenuItem>
-          <DropdownMenuItem className={"cursor-pointer p-3"} onClick={() => onOpen(id, title)}>
-            <Pencil className={"mr-2 h-4 w-4"} />
-            Rename
-          </DropdownMenuItem>
-          <ConfirmModal
-            header={"Delete board?"}
-            description={"This will delete the board and all of its contents."}
-            disabled={pending}
-            onConfirm={handleRemoveBoard}
+          <Link2 className={"mr-2 h-4 w-4"} />
+          Copy board link
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          className={"cursor-pointer p-3"}
+          onClick={() => onOpen(id, title)}
+        >
+          <Pencil className={"mr-2 h-4 w-4"} />
+          Rename
+        </DropdownMenuItem>
+        <ConfirmModal
+          header={"Delete board?"}
+          description={"This will delete the board and all of its contents."}
+          disabled={pending}
+          onConfirm={handleRemoveBoard}
+        >
+          <Button
+            variant={"ghost"}
+            className={
+              "w-full cursor-pointer justify-start p-3 text-sm font-normal"
+            }
           >
-            <Button
-              variant={"ghost"}
-              className={"w-full cursor-pointer justify-start p-3 text-sm font-normal"}
-            >
-              <Trash2 className={"mr-2 h-4 w-4"} />
-              Remove board
-            </Button>
-          </ConfirmModal>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+            <Trash2 className={"mr-2 h-4 w-4"} />
+            Remove board
+          </Button>
+        </ConfirmModal>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 

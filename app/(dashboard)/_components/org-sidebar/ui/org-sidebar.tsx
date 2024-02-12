@@ -18,11 +18,15 @@ const OrgSidebar = () => {
   const searchParams = useSearchParams()
   const favorites = searchParams.get("favorites")
   return (
-    <div className={"width-[206px] hidden flex-col space-y-6 pl-5 pt-5 lg:flex "}>
+    <div
+      className={"width-[206px] hidden flex-col space-y-6 pl-5 pt-5 lg:flex "}
+    >
       <Link href={"/"}>
         <div className={"flex items-center gap-x-2"}>
           <Image src={"/logo.svg"} alt={"logo"} width={60} height={60} />
-          <span className={cn("text-2xl font-semibold", font.className)}>Demo</span>
+          <span className={cn("text-2xl font-semibold", font.className)}>
+            Demo
+          </span>
         </div>
       </Link>
       <OrganizationSwitcher

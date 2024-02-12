@@ -43,7 +43,9 @@ const BoardFooter = ({
           disabled && "cursor-not-allowed opacity-75"
         )}
       >
-        <Star className={cn("h-4 w-4", isFavorite && "fill-blue-600 text-blue-600")} />
+        <Star
+          className={cn("h-4 w-4", isFavorite && "fill-blue-600 text-blue-600")}
+        />
       </button>
     </footer>
   )

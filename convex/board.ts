@@ -54,7 +54,9 @@ export const remove = mutation({
 
     const existingFavorite = await ctx.db
       .query("userFavorites")
-      .withIndex("by_user_board", (q) => q.eq("userId", userId).eq("boardId", args.id))
+      .withIndex("by_user_board", (q) =>
+        q.eq("userId", userId).eq("boardId", args.id)
+      )
       .unique()
 
     if (existingFavorite) {
@@ -114,7 +116,9 @@ export const favorite = mutation({
 
     const existingFavorite = await ctx.db
       .query("userFavorites")
-      .withIndex("by_user_board", (q) => q.eq("userId", userId).eq("boardId", board._id))
+      .withIndex("by_user_board", (q) =>
+        q.eq("userId", userId).eq("boardId", board._id)
+      )
       .unique()
 
     if (existingFavorite) {
@@ -149,7 +153,9 @@ export const unfavortie = mutation({
 
     const existingFavorite = await ctx.db
       .query("userFavorites")
-      .withIndex("by_user_board", (q) => q.eq("userId", userId).eq("boardId", board._id))
+      .withIndex("by_user_board", (q) =>
+        q.eq("userId", userId).eq("boardId", board._id)
+      )
       .unique()
 
     if (!existingFavorite) {
@@ -163,7 +169,7 @@ export const unfavortie = mutation({
 export const get = query({
   args: { id: v.id("boards") },
   handler: async (ctx, args) => {
-    const board = ctx.db.get(args.id)
+    const board = await ctx.db.get(args.id)
 
     return board
   },

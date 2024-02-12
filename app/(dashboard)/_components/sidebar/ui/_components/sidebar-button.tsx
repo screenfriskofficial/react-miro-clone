@@ -11,7 +11,12 @@ const SidebarButton = () => {
     <Dialog>
       <DialogTrigger asChild>
         <div className={"aspect-square"}>
-          <Hint label={"Create Organization"} side={"right"} sideOffset={10} align={"center"}>
+          <Hint
+            label={"Create Organization"}
+            side={"right"}
+            sideOffset={10}
+            align={"center"}
+          >
             <button
               className={
                 "flex h-full w-full items-center justify-center rounded-md bg-white/25 opacity-60 shadow-md transition-opacity duration-300 hover:opacity-100"
