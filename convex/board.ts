@@ -1,6 +1,6 @@
 import { v } from "convex/values"
 
-import { mutation } from "./_generated/server"
+import { mutation, query } from "./_generated/server"
 
 const images = [
   "/placeholders/1.svg",
@@ -54,9 +54,7 @@ export const remove = mutation({
 
     const existingFavorite = await ctx.db
       .query("userFavorites")
-      .withIndex("by_user_board", (q) =>
-        q.eq("userId", userId).eq("boardId", args.id)
-      )
+      .withIndex("by_user_board", (q) => q.eq("userId", userId).eq("boardId", args.id))
       .unique()
 
     if (existingFavorite) {
@@ -116,9 +114,7 @@ export const favorite = mutation({
 
     const existingFavorite = await ctx.db
       .query("userFavorites")
-      .withIndex("by_user_board", (q) =>
-        q.eq("userId", userId).eq("boardId", board._id)
-      )
+      .withIndex("by_user_board", (q) => q.eq("userId", userId).eq("boardId", board._id))
       .unique()
 
     if (existingFavorite) {
@@ -153,9 +149,7 @@ export const unfavortie = mutation({
 
     const existingFavorite = await ctx.db
       .query("userFavorites")
-      .withIndex("by_user_board", (q) =>
-        q.eq("userId", userId).eq("boardId", board._id)
-      )
+      .withIndex("by_user_board", (q) => q.eq("userId", userId).eq("boardId", board._id))
       .unique()
 
     if (!existingFavorite) {
@@ -163,5 +157,14 @@ export const unfavortie = mutation({
     }
 
     return await ctx.db.delete(existingFavorite._id)
+  },
+})
+
+export const get = query({
+  args: { id: v.id("boards") },
+  handler: async (ctx, args) => {
+    const board = ctx.db.get(args.id)
+
+    return board
   },
 })
