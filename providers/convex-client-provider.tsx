@@ -14,9 +14,7 @@ const convexURL = process.env.NEXT_PUBLIC_CONVEX_URL!
 const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
 
 const convexClient = new ConvexReactClient(convexURL)
-export const ConvexClientProvider = ({
-  children,
-}: ConvexClientProviderProp) => {
+export const ConvexClientProvider = ({ children }: ConvexClientProviderProp) => {
   return (
     <ClerkProvider publishableKey={publishableKey}>
       <ConvexProviderWithClerk client={convexClient} useAuth={useAuth}>

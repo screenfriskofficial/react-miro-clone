@@ -36,9 +36,7 @@ const BoardCard = ({
   isFavorite,
 }: BoardCardProps) => {
   const { userId } = useAuth()
-  const { mutate: onFavorite, pending: onPendingFavorite } = useApiMutation(
-    api.board.favorite
-  )
+  const { mutate: onFavorite, pending: onPendingFavorite } = useApiMutation(api.board.favorite)
   const { mutate: onUnfavorite, pending: onPendingUnfavorite } = useApiMutation(
     api.board.unfavortie
   )
@@ -78,9 +76,7 @@ const BoardCard = ({
               }
             >
               <MoreHorizontal
-                className={
-                  "text-white opacity-75 transition-opacity hover:opacity-100"
-                }
+                className={"text-white opacity-75 transition-opacity hover:opacity-100"}
               />
             </button>
           </Actions>

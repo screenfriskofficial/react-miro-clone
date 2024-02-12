@@ -54,17 +54,11 @@ const Actions = ({ children, side, sideOffset, id, title }: ActionsProps) => {
           className={"w-60"}
           onClick={(e) => e.stopPropagation()}
         >
-          <DropdownMenuItem
-            className={"cursor-pointer p-3"}
-            onClick={handleCopyLink}
-          >
+          <DropdownMenuItem className={"cursor-pointer p-3"} onClick={handleCopyLink}>
             <Link2 className={"mr-2 h-4 w-4"} />
             Copy board link
           </DropdownMenuItem>
-          <DropdownMenuItem
-            className={"cursor-pointer p-3"}
-            onClick={() => onOpen(id, title)}
-          >
+          <DropdownMenuItem className={"cursor-pointer p-3"} onClick={() => onOpen(id, title)}>
             <Pencil className={"mr-2 h-4 w-4"} />
             Rename
           </DropdownMenuItem>
@@ -76,9 +70,7 @@ const Actions = ({ children, side, sideOffset, id, title }: ActionsProps) => {
           >
             <Button
               variant={"ghost"}
-              className={
-                "w-full cursor-pointer justify-start p-3 text-sm font-normal"
-              }
+              className={"w-full cursor-pointer justify-start p-3 text-sm font-normal"}
             >
               <Trash2 className={"mr-2 h-4 w-4"} />
               Remove board

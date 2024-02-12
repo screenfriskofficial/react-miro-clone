@@ -1,10 +1,6 @@
 "use client"
 
-import {
-  OrganizationSwitcher,
-  useOrganization,
-  UserButton,
-} from "@clerk/nextjs"
+import { OrganizationSwitcher, useOrganization, UserButton } from "@clerk/nextjs"
 
 import { NavbarInviteButton } from "./_components/navbar-invite-button"
 import { NavbarSearchInput } from "./_components/navbar-search-input"
