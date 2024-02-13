@@ -36,6 +36,7 @@ const BoardCard = ({
   isFavorite,
 }: BoardCardProps) => {
   const { userId } = useAuth()
+
   const { mutate: onFavorite, pending: onPendingFavorite } = useApiMutation(
     api.board.favorite
   )
@@ -70,7 +71,6 @@ const BoardCard = ({
         <div className={"relative flex-1 bg-amber-50"}>
           <Image src={imageUrl} alt={title} fill className={"object-fill"} />
           <BoardOverlay />
-
           <Actions id={id} title={title} side={"right"}>
             <button
               className={
