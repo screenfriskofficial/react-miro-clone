@@ -8,7 +8,7 @@ import { UserAvatar } from "../../user-avatar"
 
 const MAX_SHOWN_USERS = 2
 
-const Participats = () => {
+const Participants = () => {
   const others = useOthers()
   const self = useSelf()
 
@@ -61,4 +61,4 @@ export const ParticipatsSkeleton = () => {
   )
 }
 
-export { Participats }
+export { Participants }
