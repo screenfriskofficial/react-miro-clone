@@ -2,7 +2,11 @@
 
 import React, { useCallback, useMemo, useState } from "react"
 import { LiveObject } from "@liveblocks/client"
-import { connectionIdToColor, pointerEventToCanvasPoint } from "~/lib/utils"
+import {
+  connectionIdToColor,
+  pointerEventToCanvasPoint,
+  resizingBounds,
+} from "~/lib/utils"
 import {
   useCanRedo,
   useCanUndo,
@@ -18,6 +22,8 @@ import {
   Color,
   LayerType,
   Point,
+  Side,
+  XYWH,
 } from "~/types/canvas"
 import { nanoid } from "nanoid"
 
@@ -85,6 +91,36 @@ const Canvas = ({ boardId }: CanvasProps) => {
     [lastUsedColor]
   )
 
+  const resizeSelectedLayer = useMutation(
+    ({ storage, self }, point: Point) => {
+      if (canvas.mode !== CanvasMode.Resizing) {
+        return
+      }
+
+      const bounds = resizingBounds(canvas.initialBounds, canvas.corner, point)
+      const layers = storage.get("layers")
+      const layer = layers.get(self.presence.selection[0])
+
+      if (layer) {
+        layer.update(bounds)
+      }
+    },
+
+    [canvas]
+  )
+
+  const onResizeHandlePointerDown = useCallback(
+    (corner: Side, initialBounds: XYWH) => {
+      history.pause()
+      setCanvas({
+        mode: CanvasMode.Resizing,
+        initialBounds,
+        corner,
+      })
+    },
+    [history]
+  )
+
   const onWheel = useCallback((e: React.WheelEvent) => {
     setCamera((camera) => ({
       x: camera.x - e.deltaX,
@@ -98,9 +134,13 @@ const Canvas = ({ boardId }: CanvasProps) => {
 
       const current = pointerEventToCanvasPoint(e, camera)
 
+      if (canvas.mode === CanvasMode.Resizing) {
+        resizeSelectedLayer(current)
+      }
+
       setMyPresence({ cursor: current })
     },
-    []
+    [canvas, camera, resizeSelectedLayer]
   )
 
   const onPointerLeave = useMutation(({ setMyPresence }) => {
@@ -193,7 +233,7 @@ const Canvas = ({ boardId }: CanvasProps) => {
             />
           ))}
           <CursorsPresence />
-          <SelectionBox onResizeHandlePointerDown={() => {}} />
+          <SelectionBox onResizeHandlePointerDown={onResizeHandlePointerDown} />
         </g>
       </svg>
     </main>

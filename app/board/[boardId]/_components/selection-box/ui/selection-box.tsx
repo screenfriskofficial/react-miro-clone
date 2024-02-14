@@ -56,7 +56,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation()
-                //TODO: Resize handler
+                onResizeHandlePointerDown(Side.Top + Side.Left, bounds)
               }}
             />
             <rect
@@ -71,7 +71,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation()
-                //TODO: Resize handler
+                onResizeHandlePointerDown(Side.Top, bounds)
               }}
             />
             <rect
@@ -86,7 +86,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation()
-                //TODO: Resize handler
+                onResizeHandlePointerDown(Side.Top + Side.Right, bounds)
               }}
             />
             <rect
@@ -101,7 +101,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation()
-                //TODO: Resize handler
+                onResizeHandlePointerDown(Side.Right, bounds)
               }}
             />
             <rect
@@ -116,7 +116,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation()
-                //TODO: Resize handler
+                onResizeHandlePointerDown(Side.Bottom + Side.Right, bounds)
               }}
             />
             <rect
@@ -131,7 +131,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation()
-                //TODO: Resize handler
+                onResizeHandlePointerDown(Side.Bottom, bounds)
               }}
             />
             <rect
@@ -146,7 +146,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation()
-                //TODO: Resize handler
+                onResizeHandlePointerDown(Side.Bottom + Side.Left, bounds)
               }}
             />
             <rect
@@ -161,7 +161,7 @@ const SelectionBox = memo(
               }}
               onPointerDown={(e) => {
                 e.stopPropagation()
-                //TODO: Resize handler
+                onResizeHandlePointerDown(Side.Left, bounds)
               }}
             />
           </>
