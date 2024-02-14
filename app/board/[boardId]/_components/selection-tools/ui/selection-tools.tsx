@@ -7,7 +7,7 @@ import { useDeleteLayers } from "~/hooks/use-delete-layers"
 import { useSelectionBounds } from "~/hooks/use-selection-bounds"
 import { useMutation, useSelf } from "~/liveblocks.config"
 import { Camera, Color } from "~/types/canvas"
-import { Trash2 } from "lucide-react"
+import { BringToFront, SendToBack, Trash2 } from "lucide-react"
 
 import { ColorPicker } from "../../color-picker"
 
@@ -20,6 +20,49 @@ const SelectionTools = memo(
   ({ camera, setLastUsedColor }: SelectionToolsProps) => {
     const selection = useSelf((me) => me.presence.selection)
     const selectionBounds = useSelectionBounds()
+
+    const moveToFront = useMutation(
+      ({ storage }) => {
+        const liveLayersIds = storage.get("layerIds")
+        const indices: number[] = []
+
+        const arr = liveLayersIds.toArray()
+
+        for (let i = 0; i < arr.length; i++) {
+          if (selection.includes(arr[i])) {
+            indices.push(i)
+          }
+        }
+
+        for (let i = indices.length - 1; i >= 0; i--) {
+          liveLayersIds.move(
+            indices[i],
+            arr.length - 1 - (indices.length - 1 - i)
+          )
+        }
+      },
+      [selection]
+    )
+
+    const moveToBack = useMutation(
+      ({ storage }) => {
+        const liveLayersIds = storage.get("layerIds")
+        const indices: number[] = []
+
+        const arr = liveLayersIds.toArray()
+
+        for (let i = 0; i < arr.length; i++) {
+          if (selection.includes(arr[i])) {
+            indices.push(i)
+          }
+        }
+
+        for (let i = 0; i < indices.length; i++) {
+          liveLayersIds.move(indices[i], i)
+        }
+      },
+      [selection]
+    )
 
     const setFill = useMutation(
       ({ storage }, fill: Color) => {
@@ -52,6 +95,18 @@ const SelectionTools = memo(
         }}
       >
         <ColorPicker onChange={setFill} />
+        <div className={"flex flex-col gap-y-0.5"}>
+          <Hint label={"Bring to front"}>
+            <Button onClick={moveToFront} variant={"board"} size={"icon"}>
+              <BringToFront />
+            </Button>
+          </Hint>
+          <Hint label={"Send to back"} side={"bottom"}>
+            <Button onClick={moveToBack} variant={"board"} size={"icon"}>
+              <SendToBack />
+            </Button>
+          </Hint>
+        </div>
         <div
           className={"ml-2 flex items-center border-l border-neutral-200 pl-2"}
         >
