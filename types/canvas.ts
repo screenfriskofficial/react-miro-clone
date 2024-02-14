@@ -112,3 +112,10 @@ export enum CanvasMode {
   Resizing,
   Pencil,
 }
+
+export type Layer =
+  | RectangleLayer
+  | TextLayer
+  | PathLayer
+  | EllipseLayer
+  | NoteLayer
